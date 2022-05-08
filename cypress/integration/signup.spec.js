@@ -35,18 +35,7 @@ describe('cadastro', function () {
     }
 
     before(function () {
-      cy.task('removeUser', user.email)  // Essa eh uma forma de sempre remover no banco de dados o email para que possa cadastrar novamente
-        .then(function (result) {
-          console.log(result)
-        })
-
-      cy.request(
-        'POST',
-        'http://localhost:3333/users',
-        user
-      ).then(function (response) {
-        expect(response.status).to.eq(200)
-      })
+      cy.postUser(user)
     })
 
     it('entao nao deve cadastrar o usuario', () => {
