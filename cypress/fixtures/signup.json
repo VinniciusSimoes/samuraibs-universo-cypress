@@ -1,0 +1,23 @@
+{
+  "success": {
+    "name": "Vinnicius Simoes'",
+    "email": "vinni@samuraibs.com",
+    "password": "pwd123"
+  },
+  "email_dup": {
+    "name": "Cletin tabajara",
+    "email": "cleitin@samuraibs.com",
+    "password": "pwd123",
+    "is_provider": true
+  },
+  "email_inv": {
+    "name": "Elizabeth olsen",
+    "email": "elizabeth.samuraibs.com",
+    "password": "pwd123"
+  },
+  "short_password": {
+    "name": "Jason Friday",
+    "email": "jason@gmail.com",
+    "password": null
+  }
+}
