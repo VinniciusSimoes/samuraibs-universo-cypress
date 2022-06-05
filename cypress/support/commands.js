@@ -24,17 +24,29 @@
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 
-
-Cypress.Commands.add('postUser', function(user){
-    cy.task('removeUser', user.email)  // Essa eh uma forma de sempre remover no banco de dados o email para que possa cadastrar novamente
+Cypress.Commands.add("postUser", function (user) {
+  cy.task("removeUser", user.email) // Essa eh uma forma de sempre remover no banco de dados o email para que possa cadastrar novamente
     .then(function (result) {
       console.log(result)
-    })
-    cy.request(
-        'POST',
-        'http://localhost:3333/users',
-        user
-      ).then(function (response) {
-        expect(response.status).to.eq(200)
+    });
+  cy.request("POST", "http://localhost:3333/users", user).then(function (
+    response
+  ) {
+    expect(response.status).to.eq(200)
+  })
+})
+
+Cypress.Commands.add("recoveryPass", function (email) {
+  cy.request(
+    "POST",
+    "http://localhost:3333/password/forgot", 
+    {email: email,}
+    ).then(function (response) {
+      expect(response.status).to.eq(204)
+
+    cy.task("findToken", this.data.email)
+      .then(function (result) {
+        Cypress.env('recoveryToken', result.token)
       })
+  })
 })
