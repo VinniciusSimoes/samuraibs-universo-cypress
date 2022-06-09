@@ -22,7 +22,6 @@ describe('resgate a senha', function(){
             fpPage.submit()
 
             const message = 'Enviamos um e-mail para confirmar a recuperação de senha, cheque sua caixa de entrada.'
-
             fpPage.toast.shouldHaveText(message)
         })
 
